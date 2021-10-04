@@ -42,11 +42,9 @@ def compute_mse(model_dict: dict) -> dict:
     # TODO: Calculer l'erreur quadratique moyen pour chaque modèle. Retourner un dictionnaire contenant les MSE.
     dict_nouv = {}
     for key, value in model_dict.items():
-        sum_err = 0
-        
+        sum_err = 0    
         for val in value:
-            sum_err += (val[0] - val[1])**2
-            
+            sum_err += (val[0] - val[1])**2   
         dict_nouv.update({key: sum_err/len(value)})
         
     return dict_nouv
