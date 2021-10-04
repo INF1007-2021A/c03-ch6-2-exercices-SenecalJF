@@ -27,27 +27,27 @@ def color_name_to_hex(colors: list) -> list:
 def create_list() -> list:
     # TODO: Créer une liste des 10 000 premiers entiers positif, sauf pour les entiers de 15 à 350
     # lst_nbent = []
-    # start = time.perf_counter()
+   
     # for i in range(10001):
     #     if not( i >= 15 and i <= 350):
     #          lst_nbent.append(i)
-    # end = time.perf_counter()
-    # print(end - start)
+    
           
     
-    return [i for i in range(10001) if not( i >= 15 and i <= 350)]
+    return [i for i in range(10000) if not( 15<= i <=350)]
 
 
 def compute_mse(model_dict: dict) -> dict:
     # TODO: Calculer l'erreur quadratique moyen pour chaque modèle. Retourner un dictionnaire contenant les MSE.
-    dict_nouv = {}
-    for key, value in model_dict.items():
-        sum_err = 0    
-        for val in value:
-            sum_err += (val[0] - val[1])**2   
-        dict_nouv.update({key: sum_err/len(value)})
-        
-    return dict_nouv
+    # dict_nouv = {}
+    # for key, value in model_dict.items():
+    #     sum_err = 0    
+    #     for val in value:
+    #         sum_err += (val[0] - val[1])**2   
+    #     dict_nouv.update({key: sum_err/len(value)})
+    
+
+    return {key: sum((val[0] - val[1])**2 for val in value) / len(value) for key,value in model_dict.items() }
 
 
 def main() -> None:
@@ -57,7 +57,7 @@ def main() -> None:
     colors = ["blue", "red", "green", "yellow", "black", "white"]
     print(f"La valeur hex associée aux couleurs est: {color_name_to_hex(colors)}")
 
-    # print(f"La liste des 10000 entiers est: {create_list()}")
+    print(f"La liste des 10000 entiers est: {create_list()}")
 
     model_dict = {"LR": [(90, 92), (96, 100), (20, 25), (21, -2), (3, -20)],
                   "DNN": [(100, 101), (50, 50), (1,2), (-10, -12), (-1, 7)],
